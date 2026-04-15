@@ -1,10 +1,117 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:sptiy_grand/core/configs/assets/app_images.dart';
+import 'package:sptiy_grand/core/configs/assets/app_vectors.dart';
+
+import 'package:sptiy_grand/common/widgets/button/basic_app_button.dart';
+import 'package:sptiy_grand/core/configs/theme/app_colors.dart'; // Explicitly import AppColors
 
 class ChoosePage extends StatelessWidget {
   const ChoosePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      body: Stack(
+        children: [
+          // Background image filling the entire screen
+          Positioned.fill(
+            child: Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage(AppImages.choosemoodBG),
+                ),
+              ),
+            ),
+          ),
+
+          // Semi-transparent overlay filling the entire screen
+          Positioned.fill(
+            child: Container(color: Colors.black.withOpacity(0.15)),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 40),
+            child: Column(
+              children: [
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: SvgPicture.asset(
+                    AppVectors
+                        .spotifyLogoSvg, // Use the correctly defined SVG asset path
+                  ),
+                ),
+                const Spacer(),
+                const Text(
+                  'Choose Mode',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+                const SizedBox(height: 21),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Color(
+                          0xFF1C1B1F,
+                        ), // dark background so white stroke is visible
+                        shape: BoxShape.circle,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(20),
+                        child: SvgPicture.asset(
+                          AppVectors.moonSvg,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(width: 20),
+                    // Moon container — change white to dark
+                    Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Color(
+                          0xFF1C1B1F,
+                        ), // dark background so white stroke is visible
+                        shape: BoxShape.circle,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(20),
+                        child: SvgPicture.asset(
+                          AppVectors.sunSvg,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 50), // Add some space before the button
+                BasicAppButton(
+                  title: 'Get Started',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ChoosePage(),
+                      ),
+                    );
+                  },
+                ),
+                const SizedBox(height: 20), // Add some space after the button
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
