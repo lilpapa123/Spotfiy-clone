@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sptiy_grand/core/configs/assets/app_images.dart';
@@ -55,42 +57,66 @@ class ChoosePage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      height: 100,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: Color(
-                          0xFF1C1B1F,
-                        ), // dark background so white stroke is visible
-                        shape: BoxShape.circle,
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(20),
-                        child: SvgPicture.asset(
-                          AppVectors.moonSvg,
-                          fit: BoxFit.contain,
+                    Column(
+                      children: [
+                        ClipOval(
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                            child: Container(
+                              width: 80,
+                              height: 80,
+                              decoration: BoxDecoration(
+                                color: Color(0xff30393C).withOpacity(0.5),
+                                shape: BoxShape.circle,
+                              ),
+                              child: SvgPicture.asset(
+                                AppVectors.sunSvg,
+                                fit: BoxFit.none,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
+                        const SizedBox(height: 10),
+                        Text(
+                          "Light Mode",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
                     ),
-
-                    SizedBox(width: 20),
-                    // Moon container — change white to dark
-                    Container(
-                      height: 100,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: Color(
-                          0xFF1C1B1F,
-                        ), // dark background so white stroke is visible
-                        shape: BoxShape.circle,
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(20),
-                        child: SvgPicture.asset(
-                          AppVectors.sunSvg,
-                          fit: BoxFit.contain,
+                    const SizedBox(width: 50),
+                    Column(
+                      children: [
+                        ClipOval(
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                            child: Container(
+                              width: 80,
+                              height: 80,
+                              decoration: BoxDecoration(
+                                color: Color(0xff30393C).withOpacity(0.5),
+                                shape: BoxShape.circle,
+                              ),
+                              child: SvgPicture.asset(
+                                AppVectors.moonSvg,
+                                fit: BoxFit.none,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
+                        SizedBox(width: 15),
+                        Text(
+                          "Dark Mode",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),

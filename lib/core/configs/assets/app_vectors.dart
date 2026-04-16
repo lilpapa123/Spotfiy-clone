@@ -4,7 +4,7 @@ class AppVectors {
 
   static const String spotifyLogoSvg = '${vectorPath}spotify_logo.$format';
   static const String sunSvg =
-      '${vectorPath}Sun 1.$format'; // Corrected path and casing
+      '${vectorPath}Sun.$format'; // Corrected path and casing (assuming actual file is Sun.svg)
   static const String moonSvg =
       '${vectorPath}Moon.$format'; // Added for consistency and correct path
 }
