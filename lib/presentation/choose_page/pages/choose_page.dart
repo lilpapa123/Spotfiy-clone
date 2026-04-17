@@ -1,12 +1,15 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sptiy_grand/core/configs/assets/app_images.dart';
 import 'package:sptiy_grand/core/configs/assets/app_vectors.dart';
 
 import 'package:sptiy_grand/common/widgets/button/basic_app_button.dart';
-import 'package:sptiy_grand/core/configs/theme/app_colors.dart'; // Explicitly import AppColors
+import 'package:sptiy_grand/core/configs/theme/app_colors.dart';
+import 'package:sptiy_grand/presentation/auth/pages/signup_or_signin.dart';
+import 'package:sptiy_grand/presentation/choose_mode/bloc/theme_cubit.dart'; // Explicitly import AppColors
 
 class ChoosePage extends StatelessWidget {
   const ChoosePage({super.key});
@@ -59,19 +62,26 @@ class ChoosePage extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        ClipOval(
-                          child: BackdropFilter(
-                            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                            child: Container(
-                              width: 80,
-                              height: 80,
-                              decoration: BoxDecoration(
-                                color: Color(0xff30393C).withOpacity(0.5),
-                                shape: BoxShape.circle,
-                              ),
-                              child: SvgPicture.asset(
-                                AppVectors.sunSvg,
-                                fit: BoxFit.none,
+                        GestureDetector(
+                          onTap: () {
+                            context.read<ThemeCubit>().updateTheme(
+                              ThemeMode.light,
+                            );
+                          },
+                          child: ClipOval(
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                              child: Container(
+                                width: 80,
+                                height: 80,
+                                decoration: BoxDecoration(
+                                  color: Color(0xff30393C).withOpacity(0.5),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: SvgPicture.asset(
+                                  AppVectors.sunSvg,
+                                  fit: BoxFit.none,
+                                ),
                               ),
                             ),
                           ),
@@ -90,19 +100,28 @@ class ChoosePage extends StatelessWidget {
                     const SizedBox(width: 50),
                     Column(
                       children: [
-                        ClipOval(
-                          child: BackdropFilter(
-                            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                            child: Container(
-                              width: 80,
-                              height: 80,
-                              decoration: BoxDecoration(
-                                color: Color(0xff30393C).withOpacity(0.5),
-                                shape: BoxShape.circle,
-                              ),
-                              child: SvgPicture.asset(
-                                AppVectors.moonSvg,
-                                fit: BoxFit.none,
+                        GestureDetector(
+                          onTap: () {
+                            context.read<ThemeCubit>().updateTheme(
+                              ThemeMode.dark,
+                            );
+                          },
+                          child: ClipOval(
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                              child: Container(
+                                width: 80,
+                                height: 80,
+                                decoration: BoxDecoration(
+                                  color: const Color(
+                                    0xff30393C,
+                                  ).withOpacity(0.5),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: SvgPicture.asset(
+                                  AppVectors.moonSvg,
+                                  fit: BoxFit.none,
+                                ),
                               ),
                             ),
                           ),
@@ -127,7 +146,7 @@ class ChoosePage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const ChoosePage(),
+                        builder: (context) => const SignupOrSigninPage(),
                       ),
                     );
                   },
