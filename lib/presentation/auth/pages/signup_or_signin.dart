@@ -1,7 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sptiy_grand/common/helpers/is_dark_mode.dart';
+import 'package:sptiy_grand/common/widgets/appbar/app_bar.dart';
 import 'package:sptiy_grand/common/widgets/button/basic_app_button.dart';
 import 'package:sptiy_grand/core/configs/assets/app_images.dart';
 import 'package:sptiy_grand/core/configs/assets/app_vectors.dart';
@@ -15,6 +15,8 @@ class SignupOrSigninPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
+          const BasicAppbar(),
+
           Align(
             alignment: Alignment.topRight,
             child: SvgPicture.asset(AppVectors.topPattern),
@@ -72,11 +74,14 @@ class SignupOrSigninPage extends StatelessWidget {
 
                       TextButton(
                         onPressed: () {},
-                        child: const Text(
-                          "signIn",
+                        child: Text(
+                          "SignIn",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
+                            color: context.isDarkMode
+                                ? Colors.white
+                                : Colors.black,
                           ),
                         ),
                       ),
