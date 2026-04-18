@@ -7,7 +7,6 @@ import 'package:sptiy_grand/core/configs/assets/app_images.dart';
 import 'package:sptiy_grand/core/configs/assets/app_vectors.dart';
 import 'package:sptiy_grand/core/configs/theme/app_colors.dart';
 import 'package:sptiy_grand/presentation/auth/pages/signup.dart';
-// ← correct file
 
 class SignupOrSigninPage extends StatelessWidget {
   const SignupOrSigninPage({super.key});
@@ -69,21 +68,21 @@ class SignupOrSigninPage extends StatelessWidget {
                         flex: 1,
                         child: BasicAppButton(
                           title: "Register",
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    const SignupPage(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                       SizedBox(width: 20),
 
                       TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  const SignInPage(),
-                            ),
-                          );
-                        },
+                        onPressed: () {},
                         child: Text(
                           "SignIn",
                           style: TextStyle(
