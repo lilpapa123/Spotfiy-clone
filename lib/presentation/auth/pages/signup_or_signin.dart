@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sptiy_grand/common/helpers/is_dark_mode.dart';
 import 'package:sptiy_grand/common/widgets/appbar/app_bar.dart';
 import 'package:sptiy_grand/common/widgets/button/basic_app_button.dart';
 import 'package:sptiy_grand/core/configs/assets/app_images.dart';
 import 'package:sptiy_grand/core/configs/assets/app_vectors.dart';
 import 'package:sptiy_grand/core/configs/theme/app_colors.dart';
 import 'package:sptiy_grand/presentation/auth/pages/signup.dart';
+import 'package:sptiy_grand/presentation/auth/pages/signin.dart';
 
 class SignupOrSigninPage extends StatelessWidget {
   const SignupOrSigninPage({super.key});
@@ -36,23 +36,21 @@ class SignupOrSigninPage extends StatelessWidget {
           Align(
             alignment: Alignment.center,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 40),
-
+              padding: const EdgeInsets.symmetric(horizontal: 40),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SvgPicture.asset(AppVectors.spotifyLogoSvg),
-                  SizedBox(height: 20),
-                  Text(
+                  const SizedBox(height: 20),
+                  const Text(
                     "Enjoy Listening To Music",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                   ),
-                  SizedBox(height: 14),
-
-                  Text(
+                  const SizedBox(height: 14),
+                  const Text(
                     "Spotify is a proprietary Swedish"
-                    "/ audio streaming and media services providerprovider.",
+                    " / audio streaming and media services provider.",
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 15,
@@ -60,38 +58,34 @@ class SignupOrSigninPage extends StatelessWidget {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 20),
-
+                  const SizedBox(height: 20),
                   Row(
                     children: [
                       Expanded(
-                        flex: 1,
                         child: BasicAppButton(
                           title: "Register",
                           onPressed: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    const SignupPage(),
+                                builder: (context) => const SignupPage(),
                               ),
                             );
                           },
                         ),
                       ),
-                      SizedBox(width: 20),
-
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "SignIn",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: context.isDarkMode
-                                ? Colors.white
-                                : Colors.black,
-                          ),
+                      const SizedBox(width: 20),
+                      Expanded(
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SigninPage(),
+                              ),
+                            );
+                          },
+                          child: const Text("Sign In"),
                         ),
                       ),
                     ],

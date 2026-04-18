@@ -3,15 +3,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sptiy_grand/common/widgets/appbar/app_bar.dart';
 import 'package:sptiy_grand/common/widgets/button/basic_app_button.dart';
 import 'package:sptiy_grand/core/configs/assets/app_vectors.dart';
-import 'package:sptiy_grand/presentation/auth/pages/signin.dart';
+import 'package:sptiy_grand/presentation/auth/pages/signup.dart';
 
-class SignupPage extends StatelessWidget {
-  const SignupPage({super.key});
+class SigninPage extends StatelessWidget {
+  const SigninPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: _signInText(context),
+      bottomNavigationBar: _signinText(context),
       appBar: BasicAppbar(
         title: SvgPicture.asset(
           AppVectors.spotifyLogoSvg,
@@ -27,8 +27,6 @@ class SignupPage extends StatelessWidget {
           children: [
             _registerText(),
             const SizedBox(height: 20),
-            _fullNameFiled(context),
-            const SizedBox(height: 20),
             _emilFiled(context),
             const SizedBox(height: 20),
             _passwordFiled(context),
@@ -42,17 +40,9 @@ class SignupPage extends StatelessWidget {
 
   Widget _registerText() {
     return const Text(
-      "Register",
+      "SignIn",
       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
       textAlign: TextAlign.center,
-    );
-  }
-
-  Widget _fullNameFiled(BuildContext context) {
-    return TextFormField(
-      decoration: const InputDecoration(
-        hintText: "Full Name",
-      ).applyDefaults(Theme.of(context).inputDecorationTheme),
     );
   }
 
@@ -72,24 +62,24 @@ class SignupPage extends StatelessWidget {
     );
   }
 
-  Widget _signInText(BuildContext context) {
+  Widget _signinText(BuildContext context) {
     return Padding(
       padding: EdgeInsetsGeometry.symmetric(vertical: 30),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "Do you have an Account? ",
+            "Not A Member? ",
             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
           ),
           TextButton(
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => SigninPage()),
+                MaterialPageRoute(builder: (context) => SignupPage()),
               );
             },
-            child: Text("Sign In"),
+            child: Text("Rigster Now"),
           ),
         ],
       ),
