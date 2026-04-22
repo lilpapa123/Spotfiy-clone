@@ -8,6 +8,7 @@ import 'package:sptiy_grand/core/configs/theme/app_theme.dart';
 import 'package:sptiy_grand/firebase_options.dart';
 import 'package:sptiy_grand/presentation/choose_mode/bloc/theme_cubit.dart';
 import 'package:sptiy_grand/presentation/spalsh/pages/splach.dart';
+import 'package:sptiy_grand/service_locator.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,9 +16,9 @@ Future<void> main() async {
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: HydratedStorageDirectory(appDocDir.path),
   );
-  await Firebase.initializeApp(
-    options: const DefaultFirebaseOptions.currentPlatform
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  await initilizeDependencies();
   runApp(const MyApp());
 }
 
